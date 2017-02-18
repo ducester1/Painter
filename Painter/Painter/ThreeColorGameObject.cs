@@ -24,6 +24,26 @@ namespace Painter
             velocity = Vector2.Zero;
         }
 
+        public virtual void HandleInput(InputHelper inputHelper)
+        {
+        }
+
+        public virtual void Update(GameTime gameTime)
+        {
+            position += velocity * (float)gameTime.ElapsedGameTime.TotalSeconds;
+        }
+
+        public virtual void Draw(GameTime gameTime, SpriteBatch spriteBatch)
+        {
+            spriteBatch.Draw(currentColor, position, Color.White);
+        }
+
+        public virtual void Reset()
+        {
+            Color = Color.Blue;
+        }
+
+
         public Color Color
         {
             get { return color; }
@@ -39,7 +59,16 @@ namespace Painter
                 else if (color == Color.Blue)
                     currentColor = colorBlue;
             }
-
         }
+        public Vector2 Center
+        {
+            get { return new Vector2(currentColor.Width, currentColor.Height) / 2; }
+        }
+
+        public Vector2 Position
+        {
+            get { return position; }
+        }
+
     }
 }
