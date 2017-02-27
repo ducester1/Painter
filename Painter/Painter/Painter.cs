@@ -20,11 +20,13 @@ namespace Painter
         static GameWorld gameWorld;
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
+        InputHelper inputHelper;
 
         public Painter()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
+            inputHelper = new InputHelper();
         }
 
         /// <summary>
@@ -74,7 +76,7 @@ namespace Painter
                 this.Exit();
 
             // TODO: Add your update logic here
-
+            inputHelper.Update();
             base.Update(gameTime);
         }
 
