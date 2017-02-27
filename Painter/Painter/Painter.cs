@@ -14,7 +14,7 @@ namespace Painter
     /// <summary>
     /// This is the main type for your game
     /// </summary>
-    public class Painter : Microsoft.Xna.Framework.Game
+    class Painter : Microsoft.Xna.Framework.Game
     {
 
         static GameWorld gameWorld;
@@ -94,6 +94,11 @@ namespace Painter
             gameWorld.Draw(gameTime, spriteBatch);
 
             base.Draw(gameTime);
+        }
+
+        public static GameWorld GameWorld
+        {
+            get { return gameWorld; }
         }
     }
 }
