@@ -54,6 +54,9 @@ namespace Painter
         /// </summary>
         protected override void LoadContent()
         {
+            MediaPlayer.IsRepeating = true;
+            MediaPlayer.Play(Content.Load<Song>("snd_music"));
+
             screen = new Point(GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height);
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
