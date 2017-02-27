@@ -23,6 +23,10 @@ namespace Painter
         {
             get { return cannon; }
         }
+        public void HandleInput(InputHelper inputHelper)
+        {
+            cannon.HandleInput(inputHelper);
+        }
 
 
         public void Draw(GameTime gameTime, SpriteBatch spriteBatch)

@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,6 +29,20 @@ namespace Painter
             spriteBatch.Draw(currentColor, position - new Vector2(currentColor.Width,
                              currentColor.Height) / 2, Color.White);
         }
+        public override void HandleInput(InputHelper inputHelper)
+        {
+            if (inputHelper.KeyPressed(Keys.R))
+                Color = Color.Red;
+            else if (inputHelper.KeyPressed(Keys.G))
+                Color = Color.Green;
+            else if (inputHelper.KeyPressed(Keys.B))
+                Color = Color.Blue;
+
+            double opposite = inputHelper.MousePosition.Y - position.Y;
+            double adjacent = inputHelper.MousePosition.X - position.X;
+            angle = (float)Math.Atan2(opposite, adjacent);
+        }
+
 
     }
 }
