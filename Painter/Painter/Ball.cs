@@ -19,6 +19,7 @@ namespace Painter
                     Content.Load<Texture2D>("spr_ball_green"),
                     Content.Load<Texture2D>("spr_ball_blue"))
         {
+            Reset();
             ballShot = Content.Load<SoundEffect>("snd_shoot_paint");
         }
         public override void HandleInput(InputHelper inputHelper)
@@ -33,14 +34,22 @@ namespace Painter
         }
         public override void Reset()
         {
+            base.Reset();
+            velocity = Vector2.Zero;
+            position = new Vector2(65, 390);
+            shooting = false;
         }
+
         public override void Update(GameTime gameTime)
         {
             if (shooting)
             {
-                velocity.X *= 0.99f;
+                velocity.X *= .99f;
                 velocity.Y += 6;
             }
+
+            if (Painter.GameWorld.IsOutsideWorld(position))
+                Reset();
 
             base.Update(gameTime);
         }

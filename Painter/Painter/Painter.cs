@@ -21,14 +21,19 @@ namespace Painter
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         InputHelper inputHelper;
+        static Random random;
+        static Point screen;
 
         public Painter()
+            : base()
         {
-            IsMouseVisible = true;
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             inputHelper = new InputHelper();
+            IsMouseVisible = true;
+            random = new Random();
         }
+
 
         /// <summary>
         /// Allows the game to perform any initialization it needs to before starting to run.
@@ -49,6 +54,7 @@ namespace Painter
         /// </summary>
         protected override void LoadContent()
         {
+            screen = new Point(GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height);
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
@@ -79,6 +85,7 @@ namespace Painter
             // TODO: Add your update logic here
             gameWorld.HandleInput(inputHelper);
             inputHelper.Update();
+            gameWorld.Update(gameTime);
             base.Update(gameTime);
         }
 
@@ -99,6 +106,14 @@ namespace Painter
         public static GameWorld GameWorld
         {
             get { return gameWorld; }
+        }
+        public static Random Random
+        {
+            get { return random; }
+        }
+        public static Point Screen
+        {
+            get { return screen; }
         }
     }
 }
