@@ -27,6 +27,10 @@ namespace Painter
         {
             cannon.HandleInput(inputHelper);
         }
+        public void Reset()
+        {
+            cannon.Reset();
+        }
 
 
         public void Draw(GameTime gameTime, SpriteBatch spriteBatch)

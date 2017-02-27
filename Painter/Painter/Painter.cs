@@ -24,6 +24,7 @@ namespace Painter
 
         public Painter()
         {
+            IsMouseVisible = true;
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             inputHelper = new InputHelper();

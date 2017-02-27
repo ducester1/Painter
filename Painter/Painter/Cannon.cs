@@ -42,7 +42,19 @@ namespace Painter
             double adjacent = inputHelper.MousePosition.X - position.X;
             angle = (float)Math.Atan2(opposite, adjacent);
         }
-
-
+        public override void Reset()
+        {
+            base.Reset();
+            angle = 0f;
+        }
+        public Vector2 BallPosition
+        {
+            get
+            {
+                float opposite = (float)Math.Sin(angle) * cannonBarrel.Width * 0.6f;
+                float adjacent = (float)Math.Cos(angle) * cannonBarrel.Width * 0.6f;
+                return position + new Vector2(adjacent, opposite);
+            }
+        }
     }
 }
